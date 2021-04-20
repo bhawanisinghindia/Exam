@@ -2,7 +2,9 @@ from pywebio.platform.flask import webio_view
 from pywebio import STATIC_PATH
 from flask import Flask, send_from_directory
 from pywebio.output import *
-from pywebio.input import * 
+from pywebio.input import *
+import argparse
+from pywebio import start_server 
 app=Flask(__name__)
 
 def exam():
@@ -38,7 +40,7 @@ def exam():
 
 app.add_url_rule('/tool', 'webio_view', webio_view(exam), methods=['GET','POST','OPTIONS'])
 
-if __name__=='__main__':
+if __name__=='__exam__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-p","--port",type=int,default=8080)
     args = parser.parse_args()
