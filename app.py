@@ -7,7 +7,7 @@ import argparse
 from pywebio import start_server 
 app=Flask(__name__)
 
-def exam():
+def main():
     info = input_group("Espressif Systems Online Exam",
                    [input('Name  ', name='name'),
                     input('ID NO. ',name='id'),
@@ -40,7 +40,7 @@ def exam():
 
 app.add_url_rule('/tool', 'webio_view', webio_view(exam), methods=['GET','POST','OPTIONS'])
 
-if __name__=='__exam__':
+if __name__=='__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-p","--port",type=int,default=8080)
     args = parser.parse_args()
