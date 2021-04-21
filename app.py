@@ -38,11 +38,14 @@ def main():
     if q4 == "Arora":
         put_markdown("""# Gaand maara...""")
 
-app.add_url_rule('/tool', 'webio_view', webio_view(main), methods=['GET','POST','OPTIONS'])
+app.add_url_rule('/', 'webio_view', webio_view(main), methods=['GET','POST','OPTIONS'])
 
-if __name__=='__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p","--port",type=int,default=8080)
-    args = parser.parse_args()
+app.run(debug=True)
+
+# if __name__=='__main__':
+    # app.run(debug=True)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("-p","--port",type=int,default=8080)
+    # args = parser.parse_args()
     
-    start_server(exam,port=args.port)
+    # start_server(main,port=args.port)
