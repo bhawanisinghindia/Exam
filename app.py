@@ -46,9 +46,8 @@ def main():
     if c<=3:
         put_markdown("""# you are failed""")
         
-app.add_url_rule('/', 'webio_view', webio_view(main), methods=['GET','POST','OPTIONS'])
+app.add_url_rule('/tool', 'webio_view', webio_view(main), methods=['GET','POST','OPTIONS'])
 
-app.run(debug=True)
 
 if __name__=='__main__':
     app.run(debug=True)
