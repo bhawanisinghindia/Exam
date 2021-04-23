@@ -8,36 +8,44 @@ from pywebio import start_server
 app=Flask(__name__)
 
 def main():
-    info = input_group("Espressif Systems Online Exam",
+    info = input_group("HCL Online Exam for Machine Learning Engineer",
                    [input('Name  ', name='name'),
                     input('ID NO. ',name='id'),
                     input('Age ', name='age', type=NUMBER),
                    actions('Start Exam', ['YES'],name='confirm')])
 
-    q1 = radio("What is full form of VLSI ?",["Very Large Scale Integration","land pata nahi"])
-    q2 = radio("What is electronics ?",["Analog","digital","land pata nahi"])
-    q3 = radio("What is semi-conductor ?",["Conductor of a bus","conductor which is cut into half","land pata nahi"])
-    q4 = radio("Who is Best",["Sonu","Arora"])
-
+    q1 = radio("Which of the following is a widely used and effective machine learning algorithm based on the idea of bagging?",
+               ["Decision Tree","Regression","Classification","Random Forest"])
+    q2 = radio("To find the minimum or the maximum of a function, we set the gradient to zero because:",
+               ["The value of the gradient at extrema of a function is always zero","Depends on the type of problem","None of the above"])
+    q3 = radio("Which of the following is a disadvantage of decision trees?",
+               ["Factor analysis","Decision trees are robust to outliers","Decision trees are prone to be overfit","None of the above"])
+    q4 = radio("When performing regression or classification, which of the following is the correct way to preprocess the data?",
+               ["Normalize the data -> PCA -> training","PCA -> normalize PCA output -> training","Normalize the data -> PCA -> normalize PCA output -> training"])
+    q5 = radio("Which of the following techniques can not be used for normalization in text mining?",
+               ["Stemming","Lemmatization","Stop Word Removal","None of the above"])
     c = 0
-    if q1 == "Very Large Scale Integration":
+    if q1 == "Random Forest":
         c+=1
 
-    if q2 == "land pata nahi":
+    if q2 == "The value of the gradient at extrema of a function is always zero":
         c+=1
 
-    if q3 == "land pata nahi":
+    if q3 == "Decision trees are prone to be overfit":
         c+=1
 
-    if q4 == "Sonu":
+    if q4 == "Normalize the data -> PCA -> training":
         c+=1
-        put_text("Your Score is "+str(c))
-        put_markdown("""# you are selected""")
+
+    if q5 == "Stop Word Removal":
+        c+=1        
+    
+    if c>3:
+        put_markdown("""# you are passed""")
+    
+    if c<=3:
+        put_markdown("""# you are failed""")
         
-
-    if q4 == "Arora":
-        put_markdown("""# Gaand maara...""")
-
 app.add_url_rule('/', 'webio_view', webio_view(main), methods=['GET','POST','OPTIONS'])
 
 app.run(debug=True)
